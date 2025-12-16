@@ -38,10 +38,6 @@ fun SplashScreen() {
             style = MaterialTheme.typography.displayLarge,
             fontWeight = FontWeight.Bold
         )
-        Text(
-            text = "Student micro-profiles, instantly.",
-            color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
-            style = MaterialTheme.typography.titleLarge
-        )
+
     }
 }

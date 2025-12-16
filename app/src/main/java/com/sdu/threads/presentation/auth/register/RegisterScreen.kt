@@ -10,7 +10,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,11 +30,22 @@ import com.sdu.threads.presentation.components.ThreadsTextField
 fun RegisterScreen(
     state: RegisterUiState,
     onValueChange: (RegisterUiState.() -> String, String) -> Unit,
-    onSubmit: () -> Unit
+    onSubmit: () -> Unit,
+    onBack: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Create account") })
+            TopAppBar(
+                title = { Text("Create account") },
+                navigationIcon = {
+                    IconButton(onClick = onBack) {
+                        Icon(
+                            imageVector = Icons.Rounded.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(
@@ -79,7 +94,7 @@ fun RegisterScreen(
             ThreadsTextField(
                 value = state.grade,
                 onValueChange = { onValueChange(RegisterUiState::grade, it) },
-                label = "Grade (e.g. 2 курс)"
+                label = "Grade"
             )
             ThreadsTextField(
                 value = state.major,

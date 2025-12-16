@@ -135,7 +135,8 @@ fun ThreadsNavHost() {
                 RegisterScreen(
                     state = state,
                     onValueChange = viewModel::onValueChange,
-                    onSubmit = viewModel::register
+                    onSubmit = viewModel::register,
+                    onBack = { navController.popBackStack() }
                 )
             }
             composable(Screen.Home.route) {
